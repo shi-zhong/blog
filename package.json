@@ -1,7 +1,7 @@
 {
   "name": "VuePressBlog",
   "version": "1.0.0",
-  "homepage": "https://shi-zhong.github.io/",
+  "homepage": ".",
   "description": "",
   "main": "index.js",
   "scripts": {
