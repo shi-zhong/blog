@@ -1,21 +1,23 @@
-<script setup lang='ts'>
+<!-- @format -->
 
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="vvue">
+    <br />
     vue
-  </div> 
+  </div>
 </template>
 
 <style scoped>
 .vvue {
   animation: ani 3s infinite;
+  width: 100px;
 }
 
 @keyframes ani {
   50% {
-    transform: rotate(90deg);
+    transform: translateX(100px);
   }
 }
 </style>

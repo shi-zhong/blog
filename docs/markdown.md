@@ -6,32 +6,34 @@ description: 语法
 ### 容器
 
 ::: tip
-```markdown
+```markdown:no-line-numbers
   ::: tip :::
 ```
 :::
 
 ::: warning
-```markdown
+```markdown:no-line-numbers
   ::: warning :::
 ```
 :::
 
 ::: danger
-```markdown
+```markdown:no-line-numbers
   ::: danger :::
 ```
 :::
 
-::: details
-```markdown
+::: details 细节
+```markdown:no-line-numbers
   ::: details :::
 ```
 :::
 
-### Code
+### 代码块高亮
 
-```ts{1,6-8}
+```ts{3,8-10}
+// ts: no-line-numbers 取消数字
+// ts{3,8-10}
 import { defaultTheme, defineUserConfig } from 'vuepress';
 
 export default defineUserConfig({
@@ -43,26 +45,55 @@ export default defineUserConfig({
 })
 ```
 
-<style>
-  h3 {
-    color: blue;
-  }
-</style>
+### 模板语法
 
+`:no-v-pre` 指令挂在代码块的文件格式之后，用于取消markdown的编译，使得内部`{{ 模板语法}}`被当成vue解析
+
+### Emoji
+`:EMOJICODE:` VuePress 2 已经发布 :tada: ！
+
+### 生成目录
+`[[toc]]` 
+[[toc]]
+
+### 组件
 <script setup>
   import V from '@@/Home.vue'
 </script>
 
 <v></v>
 
-### template
+```markdown:no-line-numbers
+<script setup>
+  import V from '@@/Home.vue'
+</script>
 
-```:no-v-pre
-data.query("{{ data?.CallUrl }}/{{data?.url}}").{a:1,b:2}
+<v></v>
 ```
 
-:EMOJICODE:
-VuePress 2 已经发布 :tada: ！
-[[toc]]
+- VuePress - <Badge type="tip" text="v2" vertical="top" />
 
-ts:no-line-numbers
+<CodeGroup>
+  <CodeGroupItem title="YARN">
+
+```bash:no-line-numbers
+yarn install
+```
+  </CodeGroupItem>
+  <CodeGroupItem title="NPM" active>
+
+```bash:no-line-numbers
+npm install
+```
+  </CodeGroupItem>
+</CodeGroup>
+
+### 样式
+使用 style 标签改写全局样式
+```md
+<style>
+  h3 {
+    color: blue;
+  }
+</style>
+```
