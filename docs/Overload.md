@@ -3,12 +3,12 @@ lang: zh-CN
 title: 使用ts进行函数重载
 description: 语法 
 ---
-### 引言
+## 引言
 函数重载在项目中经常遇到，在进行重载时，弱类型的js可以只进行部分类型检查，而在ts中，经常由于ts的愚蠢而爆红。不同版本的ts会有不同的结果，为了避免不断的重复令人头疼的重载，可以定义一个`overload`重载函数自动进行类型重载。
 
-### ts中的类型重载
+## ts中的类型重载
 ts中有三种办法可以进行类型重载
-1. `function`类型重载
+###  `function`类型重载
 ```ts
 function add(a: number, b: number): number;
 function add(a: string, b: string): string;
@@ -19,7 +19,7 @@ function add(a: number|string|object, b:number|string|object) {
 ```
 在这种函数重载时，实现函数的参数类型无法被推断，必须显示声明联合类型，而不是保持隐式的`any`。在某些版本中，只需要声明`typeof a === 'number'`就能够分别函数重载，但某些版本必须对每个入参进行类型断言(不要相信任何一个函数调用者)。
 
-2. `interface` 和 `type` 函数重载
+### `interface` 和 `type` 函数重载
 ```ts
 interface Add {
   (a: number, b: number): number;
@@ -49,11 +49,11 @@ type Add = {
    base: number;
 }
 ```
-### 函数重载函数
+## 函数重载函数
 通过自定义重载函数可以绕过部分严苛的类型检查，在使用者保证入参的情况下，获取更好的编程体验，而不是与ts斗智斗勇。 
 
 在设计上，一个重载函数需要做到两件事：第一件事情，在初始化时注册所有的重载，记录函数类型和函数体；第二件事，在函数调用时区分入参，找到正确的重载函数进行执行，返回其值。
-
+### 函数实现
 所以大致有以下设计
 ```ts{5-13}
 export const OverLoad = <T extends { [key: string]: (...argu: any[]) => any }>(
@@ -118,6 +118,7 @@ const overload = <T>(argu: Props<T>) => {
 ```
 使用泛型约束参数和返回值类型。
 
+### 约束参数和返回值
 首先我们可以根据传入的泛型知道每个重载的类型，接着推出其余类型。在现有的函数设计中，我希望重载函数不仅可以使用`fn(a, b)`调用，还希望能够具名调用其中某一个重载，这个设计可以让函数的实现体在不同的部位出现。于是有
 `T extends { [key: string]: (...argu: any[]) => any }`传入了对象让每个重载都有名字。
 我们首先获取函数重载，先将对象中每个值拿出来再交叉
