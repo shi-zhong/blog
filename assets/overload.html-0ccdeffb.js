@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-e447ad64","path":"/typescript/overload.html","title":"Ts函数重载","lang":"zh-CN","frontmatter":{"title":"Ts函数重载"},"headers":[],"git":{"updatedTime":1691423657000,"contributors":[{"name":"shi-zhong","email":"1393652370@qq.com","commits":1}]},"filePathRelative":"typescript/overload.md"}');export{t as data};

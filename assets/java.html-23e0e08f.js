@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-34ae6e60","path":"/before/java.html","title":"JAVA NOTE","lang":"zh-CN","frontmatter":{"title":"JAVA NOTE","tag":"JAVA","date":"2020.5.27"},"headers":[],"git":{"updatedTime":1691319003000,"contributors":[{"name":"shi-zhong","email":"1393652370@qq.com","commits":1}]},"filePathRelative":"before/java.md"}');export{e as data};

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.66">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <title>图解http笔记 | 学习笔记</title><meta name="description" content="">
+    <link rel="preload" href="/blog/assets/style-e450a036.css" as="style"><link rel="stylesheet" href="/blog/assets/style-e450a036.css">
+    <link rel="modulepreload" href="/blog/assets/app-fdfbac5b.js"><link rel="modulepreload" href="/blog/assets/http.html-e2122fcd.js"><link rel="modulepreload" href="/blog/assets/http.html-140f5b4e.js"><link rel="prefetch" href="/blog/assets/Overload.html-6113d785.js" as="script"><link rel="prefetch" href="/blog/assets/gh-page.html-59bb566d.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-c4f2fcf6.js" as="script"><link rel="prefetch" href="/blog/assets/markdown.html-8ea63b45.js" as="script"><link rel="prefetch" href="/blog/assets/CS-notes-share.html-f27e342b.js" as="script"><link rel="prefetch" href="/blog/assets/class.html-3eb78ab4.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-0101da82.js" as="script"><link rel="prefetch" href="/blog/assets/java.html-23e0e08f.js" as="script"><link rel="prefetch" href="/blog/assets/share.html-1035eea7.js" as="script"><link rel="prefetch" href="/blog/assets/share5.1.html-91c5dcde.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-000a1064.js" as="script"><link rel="prefetch" href="/blog/assets/overload.html-0ccdeffb.js" as="script"><link rel="prefetch" href="/blog/assets/404.html-f9875e7b.js" as="script"><link rel="prefetch" href="/blog/assets/Overload.html-b407ff77.js" as="script"><link rel="prefetch" href="/blog/assets/gh-page.html-906bda85.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-ad7a9fa1.js" as="script"><link rel="prefetch" href="/blog/assets/markdown.html-8f681f19.js" as="script"><link rel="prefetch" href="/blog/assets/CS-notes-share.html-e09eebf1.js" as="script"><link rel="prefetch" href="/blog/assets/class.html-f7986771.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-0c996168.js" as="script"><link rel="prefetch" href="/blog/assets/java.html-94886478.js" as="script"><link rel="prefetch" href="/blog/assets/share.html-288001bc.js" as="script"><link rel="prefetch" href="/blog/assets/share5.1.html-6af757c7.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-4310eb04.js" as="script"><link rel="prefetch" href="/blog/assets/overload.html-13812d23.js" as="script"><link rel="prefetch" href="/blog/assets/404.html-c47dc2f2.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/blog/" class=""><!----><span class="site-name">学习笔记</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide"><!--[--><div class="navbar-item"><a href="/blog/" class="" aria-label="home"><!--[--><!--]--> home <!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button class="toggle-color-mode-button" title="toggle color mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items"><!--[--><div class="navbar-item"><a href="/blog/" class="" aria-label="home"><!--[--><!--]--> home <!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><a aria-current="page" href="/blog/before/http.html" class="router-link-active router-link-exact-active router-link-active sidebar-item sidebar-heading active" aria-label="图解http笔记"><!--[--><!--]--> 图解http笔记 <!--[--><!--]--></a><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/blog/before/http.html#一、web基础" class="router-link-active router-link-exact-active sidebar-item" aria-label="一、Web基础"><!--[--><!--]--> 一、Web基础 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/blog/before/http.html#二、简单的http协议" class="router-link-active router-link-exact-active sidebar-item" aria-label="二、简单的HTTP协议"><!--[--><!--]--> 二、简单的HTTP协议 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/blog/before/http.html#三、http报文" class="router-link-active router-link-exact-active sidebar-item" aria-label="三、HTTP报文"><!--[--><!--]--> 三、HTTP报文 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/blog/before/http.html#四、http状态码" class="router-link-active router-link-exact-active sidebar-item" aria-label="四、HTTP状态码"><!--[--><!--]--> 四、HTTP状态码 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/blog/before/http.html#五、协作web服务器" class="router-link-active router-link-exact-active sidebar-item" aria-label="五、协作Web服务器"><!--[--><!--]--> 五、协作Web服务器 <!--[--><!--]--></a><!----></li><!--]--></ul></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><!--]--><div><h3 id="一、web基础" tabindex="-1"><a class="header-anchor" href="#一、web基础" aria-hidden="true">#</a> 一、Web基础</h3><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>				    		      客户端
+TCP/IP	　　｜应用层:决定了向用户提供应用服务时通信的活动        |
+	　　｜      HTTP FTP(文件传输) DNS(解析域名,返回IP) |封装
+分层管理　 　｜传输层:两台计算机之间的数据传输		        |添加
+	　　｜      TCP(传输控制协议) UPD(用户数据报协议)    |部首
+	　　｜网络层:规划数据包(最小数据单位)传输路线           |信息
+	　　｜	   IP		                        |
+	　　｜链路层:处理硬件:操作系统、网卡、驱动等	        V
+
+分层优点:简化设计,将整体分割利于替换
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-yxy line-numbers-mode" data-ext="yxy"><pre class="language-yxy"><code>APR协议解析地址,凭借MAC地址进行数据中转
+      分割数据包/SYN
+发|-------------------&gt;|接
+  |	SYN/ACK        |
+送|&lt;-------------------|收
+  |        ACK         |
+端|-------------------&gt;|端
+
+DNS查找IP
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>协议:(认证)@服务器地址:(端口)/文件路径?(查询字符串)#(片段标识符)
+查询字符串:?参数=值&amp;参数=值&amp;...
+	固定参数:访问分析,不影响页面内容
+	活动参数:影响内容,可用于筛选等,若有页内链接&#39;URL+参数+页内链接&#39;
+片段标识符:标记子资源,例如查询.html文件里的id=msg,则.html#msg
+
+RFC 征求修正意见书，用来制定HTTP技术标准
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="二、简单的http协议" tabindex="-1"><a class="header-anchor" href="#二、简单的http协议" aria-hidden="true">#</a> 二、简单的HTTP协议</h3><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>请求报文
+|请求方法(GET POST)/请求URI(*) 协议版本(HTTP/1.1)---请求行
+|(请求首部 内容实体)(HOST: hackr.jp)[(请求)(通用)(实体)](首部字段)
+|-----------------------------------------------------
+		|	^
+	请求	V	|响应
+|-----------------------------------------------------
+|HTTP/1.1 200 OK
+|协议版本 状态码 原因---------------------------状态行
+|(空行)
+|Date: Tue, 10 Jul 2012 06:50:15 GMT
+|...响应首部字段 资源实体[(响应)(通用)(实体)](首部字段)
+响应报文
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>请求方法(HTTP/1.1)
+GET: 获取资源;
+POST: 传输实体主体
+PUT: 传输文件(不使用)
+HEAD: 获得报文首部，类似GET,只是不返回报文主体，用于确认URI的有效性和日期
+PUT/DELETE: 推送/删除(不使用)
+OPITONS: 询问支持方法
+TRACE: 追踪路径(确认加工/篡改)(易被攻击,少用)
+CONNECT: 代理服务器通讯建立隧道,进行TCP通讯(用SSL TLS) CONNECT 服务器名:端口 HTTP版本
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>http是无状态的协议
+cokkie用于本地保存文件，减少服务端负担。用于认证信息。
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="三、http报文" tabindex="-1"><a class="header-anchor" href="#三、http报文" aria-hidden="true">#</a> 三、HTTP报文</h3><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>报文主体用于描述传输文件
+实体主体表示传输具体内容，可在传输中编码(压缩)
+大文件分割发送
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="四、http状态码" tabindex="-1"><a class="header-anchor" href="#四、http状态码" aria-hidden="true">#</a> 四、HTTP状态码</h3><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code>	|--------------------------------------------------------------------
+  2XX	|200 OK
+success	|204 No Content(无资源返回|无需更新客户端资源)
+	|206 Partial Content(请求范围)
+	|--------------------------------------------------------------------
+  	|301 Moved Permanently(URI改变，更新书签，资源最后忘加&quot;/&quot;，返回301)
+	|302 Found(临时移动资源，不更新书签)
+  3XX	|303 See Other(与302相似,只是方法固定是GET)
+	|304 Not Modifiied(?)
+	|307 Temporary Redirect==302
+	|---------------------------------------------------------------------
+  4XX	|400 Bad Request (语法错误)
+	|401 Unauthorized(寻求认证)
+	|403 Forbidden(权限问题等)
+	|404 Not Found(无资源)
+	|---------------------------------------------------------------------
+  5XX	|501 Internal Server Error(服务器内部错误)
+	|503 Service Unavailable(超负载||维护)
+	|---------------------------------------------------------------------
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="五、协作web服务器" tabindex="-1"><a class="header-anchor" href="#五、协作web服务器" aria-hidden="true">#</a> 五、协作Web服务器</h3><div class="language-txt line-numbers-mode" data-ext="txt"><pre class="language-txt"><code></code></pre><div class="line-numbers" aria-hidden="true"></div></div></div><!--[--><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">Contributors: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: 1393652370@qq.com">shi-zhong</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script type="module" src="/blog/assets/app-fdfbac5b.js" defer></script>
+  </body>
+</html>
