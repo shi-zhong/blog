@@ -3,85 +3,9 @@
 import fs from 'fs';
 import Path from 'path';
 
-import { isMd, rootPath, log, getRootPath } from './resolveFiles';
+import { isMd, rootPath, log, resolvePath } from './resolveFiles';
 
-const readConfig = (path = '.vuepress') => {
-  const config = {
-    exist: false,
-    file: {},
-  };
-
-  log(path);
-
-  try {
-    const file = fs.readFileSync(`${path}/config.json`);
-    config.exist = true;
-    config.file = JSON.parse(file.toString());
-  } catch (err) {
-    console.error('[File Not Exist]', `${path}/config.json`);
-  }
-
-  return config;
-};
-
-// 合并配置文件   对于基本数据类型，直接覆盖
-//              对于引用数据类型，数组直接合并，对象同上操作
-const mergeConfig = (a: object, b: object) => {
-  if (a === undefined || b === undefined) {
-    if (a !== undefined) return a;
-    if (b !== undefined) return b;
-  }
-
-  const config = { ...a };
-  Object.keys(b).map((k) => {
-    if (a[k] !== undefined) {
-      if (typeof a[k] !== 'object') {
-        config[k] === b[k];
-      } else if (a[k] instanceof Array) {
-        config[k] = b[k].concat(a[k]);
-      } else {
-        config[k] = mergeConfig(a[k], b[k]);
-      }
-    } else {
-      config[k] = b[k];
-    }
-  });
-  return config;
-};
-
-const getRootConfig = () => {
-  let rootConfig;
-  return () => {
-    if (!rootConfig) {
-      rootConfig = readConfig(Path.resolve(rootPath, '.vuepress'));
-    }
-    return rootConfig;
-  };
-};
-
-const rootConfig = getRootConfig();
-
-export const RenderIndexMd = (files, path) => {
-  const rootDir = Path.resolve(getRootPath(), path);
-  // path = path.resolve(root, path);
-  const dirConfig = readConfig(path);
-
-  const config: any = mergeConfig(dirConfig.file, rootConfig().file);
-
-  let head = RenderHead(config);
-  let style = RenderStyle(config.style);
-
-  let file = RenderContentList(files, path);
-
-  fs.writeFile(
-    rootDir + '/index.md',
-    [head, style, file].join('\n\n'),
-    {},
-    () => {
-      log(rootDir + '/index.md');
-    }
-  );
-};
+import RootConfig from '../config.json';
 
 function formaDate(timer) {
   function pad(timeEl, total = 2, str = '0') {
@@ -124,22 +48,10 @@ const RenderHead = (config) => {
  */
 const RenderContentList = (files, path: string, end = false) => {
   const fileList: string[] = [];
-  const dirList: { [key: string]: string } = {};
-  Object.keys(files).map((f: string) => {
-    if (isMd(f)) {
-      fileList.push(renderFile(`${end ? path : './'}${f}`, files[f], +end)); // file
-    } else {
-      if (!end) {
-        dirList[f] = RenderContentList(files[f], `${f}/`, true);
-      } else {
-        dirList[f] = RenderDir(`${path}${f}`, +end);
-      }
-    }
+  files.map((f: object) => {
+    fileList.push(`### [${f.title || f.slug}](./${(f.slug).replaceAll(' ', '%20')}.md)`);
   });
-  return [
-    ...Object.keys(dirList).map((dir) => Indent(dir, dirList[dir], +end)),
-    ...fileList,
-  ].join('\n');
+  return fileList.join('\n');
 };
 
 const RenderDir = (path: string, indent = 0) => {
@@ -178,4 +90,36 @@ ${Object.keys(style[select])
   })
   .join('\n')}
 </style>`;
+};
+
+export default (path: string, data: object) => {
+  const base = resolvePath(`.${path}/index.md`);
+
+  // '/前端基础知识': {
+  //   dir: '/前端基础知识',
+  //   files: [ [Object], [Object], [Object], [Object] ],
+  //   config: {}
+  // },
+  // fs.writeFileSync(base, JSON.stringify(data, null, 4));
+
+  const rootDir = '';
+  // path = path.resolve(root, path);
+
+  console.log(base);
+  console.log(
+    [RenderStyle(RootConfig.style), RenderContentList(data.files!, path)].join(
+      '\n\n'
+    )
+  );
+  console.log(JSON.stringify(data, null, 4));
+  fs.writeFile(
+    base,
+    [RenderStyle(RootConfig.style), RenderContentList(data.files!, path)].join(
+      '\n\n'
+    ),
+    {},
+    () => {
+      log(base);
+    }
+  );
 };

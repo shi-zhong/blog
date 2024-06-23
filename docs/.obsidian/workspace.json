@@ -1,0 +1,189 @@
+{
+  "main": {
+    "id": "174fbc153e542337",
+    "type": "split",
+    "children": [
+      {
+        "id": "2a759389dd573668",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "45cfa22ff9ac037f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "框架/react VS vue Router.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "34212846d87284e6",
+    "type": "split",
+    "children": [
+      {
+        "id": "cc873d2cc83776ae",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "386ed46a80dea984",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "041f82a4a14c433f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "415305e298a45fa1",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 247.5
+  },
+  "right": {
+    "id": "3ae0a8b91421b4fa",
+    "type": "split",
+    "children": [
+      {
+        "id": "aabe87f73961a3ce",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "07daae8424cdb0c0",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "框架/react VS vue Router.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "4fe39d9fc8fbefa7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "框架/react VS vue Router.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "dbaa9e08eca3568f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "dea9bbd7639e5af5",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "框架/react VS vue Router.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "45cfa22ff9ac037f",
+  "lastOpenFiles": [
+    "框架构建/react-router.md",
+    "框架/react VS vue Router.md",
+    "ELSE/DOM 操作.md",
+    "ELSE/优秀的前端库.md",
+    "ELSE/问题.md",
+    "ELSE/路由组件对比.md",
+    "框架构建/vue router.md",
+    "框架/index.md",
+    "框架/react VS vue.md",
+    "笔记文件名.md",
+    "框架构建/Vitest.md",
+    "框架构建/Vue3.md",
+    "框架构建/Redux.md",
+    "框架构建/React.md",
+    "框架构建/index.md",
+    "框架构建/构建工具.md",
+    "前端基础知识/Javascript.md",
+    "ELSE/面试题.md",
+    "前端基础知识/ES6.md",
+    "前端基础知识/CSS.md",
+    "前端基础知识/axios.md",
+    "前端进阶/WebGl Shader.md",
+    "前端进阶/Typescript.md",
+    "前端进阶/IntersectionObserver 视口监听.md",
+    "前端进阶/网页设备API.md",
+    "前端进阶/标签页数据共享.md",
+    "语法实现/grammar.js",
+    "VueNote/未命名.canvas",
+    "xmind笔记/Vuex4.xmind",
+    "xmind笔记/Vue.xmind",
+    "xmind笔记/Vue Router.xmind",
+    "xmind笔记/Pinia.xmind",
+    "xmind笔记",
+    "ELSE",
+    "语法实现/instanceof.js",
+    "语法实现/async.js",
+    "语法实现"
+  ]
+}

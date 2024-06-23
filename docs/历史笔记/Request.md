@@ -1,15 +1,13 @@
 ---
-title: 前端分享
+title: 请求处理与封装
 tag: 前端
 date: 2021.3.16
 ---
 
-### 前端请求
+小程序完成静态之后需要与后端联调, 所以需要掌握与后端联系的方法, 请求(request)就是与后端联系的通道.
+通俗地讲, 请求就是一个网址, 电脑解析网址之后向去找到网址对应的IP地址, 并携带信息去访问目的地址. 直接在浏览器地址里面输入API的URL, 浏览器也会尝试用默认的方法和首部构建请求访问并获取信息.
 
-  小程序完成静态之后需要与后端联调, 所以需要掌握与后端联系的方法, 请求(request)就是与后端联系的通道.
-  通俗地讲, 请求就是一个网址, 电脑解析网址之后向去找到网址对应的IP地址, 并携带信息去访问目的地址. 直接在浏览器地址里面输入API的URL, 浏览器也会尝试用默认的方法和首部构建请求访问并获取信息.
-
-#### XMLHttpRequest
+### XMLHttpRequest
 
   [XHR](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest)是一个经典的浏览器对象, 用于构建与服务器的连接.
 
@@ -72,9 +70,9 @@ date: 2021.3.16
 
   这样就可以从xhr 中取出存在responseText里面的数据了, 不只是Text, 也会有其他数据, 一般来说我们都只会用到json 的数据,其他类型的可以自行谷歌.
 
-  简单的封装样例
+  #### 简单的封装样例
 
-  ``` js
+  ``` js :no-line-numbers
 
     function XHR(url = '/', method = "GET", options = {}) {
         const preHttp = "http://localhost:9090/default";
@@ -102,7 +100,7 @@ date: 2021.3.16
   ```
 
 
-#### fetch
+### fetch
 
   fetch 是 XHR 的进阶版,基于XHR进行了改进和封装, 相较于 XHR更新并且更加灵活.
   fetch 提供了 Response 和 Request 对象, 接收一个地址, 无论成功与否, 返回一个Response对象;
@@ -146,13 +144,13 @@ date: 2021.3.16
 
   ```
 
-  封装举例
+  #### 封装举例
 
   现阶段用到的部分不多, fetch的大部分参数用不到, 最频繁的就是 URL method body 三个属性, 封装主要考虑这三者;
 
   成熟的封装网上有很多, 大家可以参考谷歌
 
-  ``` js
+  ```ts :no-line-numbers
 
     interface optionObj {
       header: object;
@@ -160,7 +158,9 @@ date: 2021.3.16
       body: Formdata | object | blob;
     }
 
-    const Fetch = (url: string, method: 'POST'|'GET'|'DELETE'|'PUT', optionObj: optionObj): Response => {
+    type Method = 'POST'|'GET'|'DELETE'|'PUT'
+
+    const Fetch = (url: string, method: Method, optionObj: optionObj): Response => {
       
       const preHttp = "https://baseurl.com/api/v1"
 
@@ -189,7 +189,7 @@ date: 2021.3.16
 
   ```
 
-  小程序用的请求示例
+  #### 小程序用的请求示例
 
 
   ``` js

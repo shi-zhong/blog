@@ -1,5 +1,5 @@
 /**
- * 抓取docs文件夹下所有md文件的标题，前7行
+ * 抓取docs文件夹下所有md文件的标题
  *
  * 如果有设置，则抓取键值对
  *
@@ -8,9 +8,14 @@
  * @format
  */
 
-import fs from 'fs';
+/**
+ * 该插件目标：根据配置文件生成目录
+ * 1. 根据文件夹下的配置文件config.json来进行配置
+ * 2. 根据.md文件的标签来进行配置
+ */
+
 import path from 'path';
-import { RenderIndexMd } from './render';
+import fs from 'fs';
 
 const __dirname = path.dirname(import.meta.url).slice(7);
 
@@ -18,9 +23,6 @@ export const rootPath = path.resolve(__dirname, '../..'); // /home/liuan/Applica
 export const getRootPath = () => path.resolve(__dirname, '../..');
 
 const mdReg = /.md$/;
-const ignoreReg = /^\./;
-
-const exclude = ['index.md', 'README.md', 'template.md'];
 
 /**
  *
@@ -90,97 +92,25 @@ const colorFormat = (info, color = 'white'): string => {
  */
 export const isMd = (file) => mdReg.test(file);
 
-const isIgnore = (file) => ignoreReg.test(file);
-
-/**
- * @param {string} base
- * @param {object} record
- */
-const readDirFiles = (base, record = {}) => {
-  fs.readdirSync(base).forEach((file) => {
-    let stat = fs.lstatSync(base + '/' + file);
-
-    if (stat.isDirectory()) {
-      if (!isIgnore(file)) {
-        record[file] = readDirFiles(base + '/' + file);
-      } else {
-        log(file, 'hide');
-      }
-    } else if (stat.isFile() && isMd(file)) {
-      if (exclude.includes(file)) return;
-      let dataset = readFileTitle(base + '/' + file);
-      record[file] = dataset;
-      log((base + '/' + file).slice(rootPath.length + 1) + ' ' + dataset.title);
-    }
-  });
-
-  RenderIndexMd(record, base);
-  return record;
-};
-
-/**
- *
- * @param {string} filePath
- */
-const readFileTitle = (filePath): { title: string; [key: string]: string } => {
-  const file = fs.readFileSync(filePath);
-
-  const lines = readFileLines(file.toString());
-
-  if (lines[0].trim() === '---') {
-    const dataset = { title: 'untitled' };
-    for (let i = 1; i < lines.length; i++) {
-      if (lines[i].trim() !== '---') {
-        let kv = readKeyValue(lines[i]);
-        dataset[kv[0]] = kv[1];
-      } else {
-        break;
-      }
-    }
-    return dataset;
+export const DirName = (fileName: string) => {
+  const dir = fileName.split('/').slice(0, -1).join('/');
+  if (dir.startsWith('/')) {
+    return dir;
   } else {
-    return { title: lines[0] };
+    return `/${dir}`;
   }
 };
 
-/**
- * @param {string} fileData
- * @param {number} maxLine
- */
-const readFileLines = (fileData, maxLine = 7): string[] => {
-  let i = 0,
-    p = 0;
-  const line: string[] = [];
-  while (fileData[i] !== undefined && p < maxLine) {
-    if (line[p] === undefined) {
-      line.push('');
-    }
-    if (fileData[i] === '\n') {
-      if (line[p].trim().length) {
-        p++;
-      }
-    } else {
-      line[p] += fileData[i];
-    }
-    i++;
-  }
-  return line;
+export const resolvePath = (rela_ath) => {
+  return path.resolve(getRootPath(), rela_ath);
 };
 
-/**
- *
- * @param {string} kv
- */
-const readKeyValue = (kv) => {
-  const map = kv.split(':');
-  if (map.length === 1) {
-    return ['unkey', map[0].trim()];
-  } else if (map.length === 2) {
-    return [map[0].trim(), map[1].trim()];
-  } else {
-    const key = map.shift();
-    return [key.trim(), map.join(':').trim()];
+export const ReadConfig = (dir) => {
+  const configPath = resolvePath(`.${dir}/config.json`);
+
+  try {
+    return JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+  } catch (error) {
+    return {};
   }
 };
-
-export default () => readDirFiles(rootPath);

@@ -24,9 +24,16 @@ export default defineUserConfig({
   },
   open: false,
   theme: defaultTheme({
-    navbar: [{ text: 'home', link: '/' }],
-    sidebar: {
-      '/': [''], // 根目录无法置空
-    },
+    navbar: [
+      // 这里进行一次大分类
+      { text: 'typescript', link: '/typescript' },
+      { text: '其余分类', children: [{ text: '历史笔记', link: '/历史笔记' }] },
+      { text: 'home', link: '/' },
+    ],
+    sidebarDepth: 3,
+    // sidebar进行小分类书写
+    // sidebar: {
+    //   '/': [''], // 根目录无法置空
+    // },
   }),
 });

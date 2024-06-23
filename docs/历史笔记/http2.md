@@ -1,5 +1,5 @@
 ---
-title: CS-notes-share
+title: http基础笔记
 date: 2019-12-11 16:58:28
 tags:
 ---
@@ -79,8 +79,6 @@ HTTPS 不对称加密密钥，再用对称密钥通信
 
  1. 因为需要进行加密解密等过程，因此速度会更慢；
  2. 需要支付证书授权的高额费用。
-
-
 
 
 [握手](https://blog.csdn.net/qq_38950316/article/details/81087809)
