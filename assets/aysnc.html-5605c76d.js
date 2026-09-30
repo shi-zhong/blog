@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-1dff40b9","path":"/%E8%AF%AD%E6%B3%95%E5%AE%9E%E7%8E%B0/aysnc.html","title":"aysnc 在es5下的一种实现","lang":"zh-CN","frontmatter":{"title":"aysnc 在es5下的一种实现","tags":["语法实现"]},"headers":[],"git":{"updatedTime":1719102278000,"contributors":[{"name":"liuan","email":"1393652370@qq.com","commits":1}]},"filePathRelative":"语法实现/aysnc.md"}');export{t as data};

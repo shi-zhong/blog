@@ -1,0 +1,9 @@
+import{_ as n,o as s,c as a,a as e}from"./app-be7ae715.js";const t={},c=e(`<p>继承是面向对象编程中常见一种拓展方式 ，<code>js</code>作为吸收了面向对象编程思想的语言，自然是包含了这种语法实现。<code>extends</code>关键字作为一个语法糖在<code>es6</code>中得以实现。在<code>js</code>中，继承的关系是通过原型链得以体现的，当对象原型出现在对象实例的原型链上时，称该对象继承自目标对象，可以通过<code>instanceof</code>关键字来判断对象的继承关系。</p><div class="language-javascript line-numbers-mode" data-ext="js"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token function-variable function">Extends</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">parent<span class="token punctuation">,</span> child</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">parent</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  
+  <span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">child</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  c<span class="token punctuation">.</span>__proto__ <span class="token operator">=</span> p<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,2),o=[c];function p(l,i){return s(),a("div",null,o)}const r=n(t,[["render",p],["__file","extends.html.vue"]]);export{r as default};

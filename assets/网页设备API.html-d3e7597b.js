@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-583fbbfc","path":"/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/%E7%BD%91%E9%A1%B5%E8%AE%BE%E5%A4%87API.html","title":"","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1719102278000,"contributors":[{"name":"liuan","email":"1393652370@qq.com","commits":1}]},"filePathRelative":"前端进阶/网页设备API.md"}');export{t as data};

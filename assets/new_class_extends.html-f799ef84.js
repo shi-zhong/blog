@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-297ebf54","path":"/%E8%AF%AD%E6%B3%95%E5%AE%9E%E7%8E%B0/new_class_extends.html","title":"","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1719102278000,"contributors":[{"name":"liuan","email":"1393652370@qq.com","commits":1}]},"filePathRelative":"语法实现/new&class&extends.md"}');export{e as data};
